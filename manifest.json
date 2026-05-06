@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "LC problem reminder",
+  "version": "1.0",
+  "description": "Schedule and manage your LeetCode problem reminders.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "LeetCode Reminder",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs"
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://leetcode.com/*",
+        "*://*.leetcode.com/*"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["popup.html", "popup.css", "popup.js"],
+      "matches": ["*://leetcode.com/*", "*://*.leetcode.com/*"]
+    }
+  ]
+}

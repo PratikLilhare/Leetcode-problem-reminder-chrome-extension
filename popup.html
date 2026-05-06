@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeetCode Reminder</title>
+  <link rel="stylesheet" href="popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+        <h1>LC Reminder</h1>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <section class="add-task-section glass-panel">
+        <form id="add-problem-form">
+          <div class="input-group">
+            <input type="text" id="problem-name" placeholder="Problem Name or URL" required autocomplete="off">
+          </div>
+          <div class="input-group row-group">
+            <label for="remind-days">Remind me in</label>
+            <div class="days-input-wrapper">
+              <input type="number" id="remind-days" min="0" value="1" required>
+              <span>days</span>
+            </div>
+            <button type="submit" class="btn-primary">Add</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="tabs-section">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="today">Today <span id="today-count" class="badge">0</span></button>
+          <button class="tab-btn" data-tab="upcoming">Upcoming <span id="upcoming-count" class="badge">0</span></button>
+          <button class="tab-btn" data-tab="backlog">Backlog <span id="backlog-count" class="badge">0</span></button>
+        </div>
+
+        <div class="tab-content active" id="tab-today">
+          <ul class="problem-list" id="list-today"></ul>
+        </div>
+        <div class="tab-content" id="tab-upcoming">
+          <ul class="problem-list" id="list-upcoming"></ul>
+        </div>
+        <div class="tab-content" id="tab-backlog">
+          <ul class="problem-list" id="list-backlog"></ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

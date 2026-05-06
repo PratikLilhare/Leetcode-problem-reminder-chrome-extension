@@ -1,0 +1,136 @@
+#lc-reminder-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2147483647;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #3b82f6;
+}
+
+#lc-reminder-fab:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  background: rgba(15, 23, 42, 1);
+}
+
+#lc-reminder-fab svg {
+  width: 28px;
+  height: 28px;
+}
+
+.lc-badge {
+  position: absolute;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  border: 2px solid #0f172a;
+}
+
+.lc-badge.today {
+  top: -4px;
+  right: -4px;
+  background: #10b981;
+}
+
+.lc-badge.backlog {
+  bottom: -4px;
+  left: -4px;
+  background: #ef4444;
+}
+
+#lc-reminder-iframe {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  width: 360px;
+  height: 520px;
+  z-index: 2147483646;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#lc-reminder-iframe.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#lc-reminder-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2147483645;
+  background: transparent;
+  display: none;
+}
+
+#lc-reminder-backdrop.visible {
+  display: block;
+}
+
+#lc-reminder-close-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 96px;
+  z-index: 2147483647;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.3);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(20px) scale(0.8);
+}
+
+#lc-reminder-close-fab.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+#lc-reminder-close-fab:hover {
+  background: rgba(220, 38, 38, 1);
+  transform: scale(1.05);
+}
+
+#lc-reminder-close-fab svg {
+  width: 28px;
+  height: 28px;
+}
