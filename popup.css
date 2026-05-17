@@ -339,3 +339,50 @@ body {
   color: var(--text-secondary);
   font-size: 0.9rem;
 }
+
+/* Dev Profile */
+.app-footer {
+  padding: 12px 16px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: var(--glass-blur);
+  border-top: 1px solid var(--border-color);
+  z-index: 10;
+}
+
+.dev-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dev-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+}
+
+.dev-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dev-link {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+
+.dev-link:hover {
+  color: var(--primary-accent);
+}

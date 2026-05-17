@@ -12,7 +12,7 @@ A Chrome extension designed to help you schedule, track, and manage your LeetCod
 
 ## Screenshot
 
-![Extension Screenshot](screenshot.png)
+![Extension Screenshot](assets/screenshot.png)
 
 ## Installation
 

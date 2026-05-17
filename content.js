@@ -4,7 +4,8 @@ function createIframe() {
   const iframe = document.createElement('iframe');
   iframe.id = 'lc-reminder-iframe';
   const currentUrl = encodeURIComponent(window.location.href);
-  iframe.src = chrome.runtime.getURL(`popup.html?url=${currentUrl}`);
+  const currentTitle = encodeURIComponent(document.title);
+  iframe.src = chrome.runtime.getURL(`popup.html?url=${currentUrl}&title=${currentTitle}`);
   document.body.appendChild(iframe);
   return iframe;
 }
@@ -97,7 +98,7 @@ function toggleIframe() {
     iframe.classList.add('visible');
     backdrop.classList.add('visible');
     closeFab.classList.add('visible');
-    iframe.contentWindow.postMessage({ action: 'setLcUrl', url: window.location.href }, '*');
+    iframe.contentWindow.postMessage({ action: 'setLcUrl', url: window.location.href, title: document.title }, '*');
   } else {
     iframe.classList.remove('visible');
     backdrop.classList.remove('visible');
@@ -129,7 +130,7 @@ window.addEventListener('message', (event) => {
     } else if (event.data.action === 'getLcUrl') {
       let iframe = document.getElementById('lc-reminder-iframe');
       if (iframe && iframe.contentWindow) {
-        iframe.contentWindow.postMessage({ action: 'setLcUrl', url: window.location.href }, '*');
+        iframe.contentWindow.postMessage({ action: 'setLcUrl', url: window.location.href, title: document.title }, '*');
       }
     }
   }

@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
   "name": "LC problem reminder",
-  "version": "1.0",
+  "version": "1.0.0.1",
   "description": "Schedule and manage your LeetCode problem reminders.",
   "action": {
     "default_popup": "popup.html",
     "default_title": "LeetCode Reminder",
     "default_icon": {
-      "16": "icon.png",
-      "48": "icon.png",
-      "128": "icon.png"
+      "16": "assets/icon.png",
+      "48": "assets/icon.png",
+      "128": "assets/icon.png"
     }
   },
   "permissions": [
@@ -18,15 +18,19 @@
     "tabs"
   ],
   "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
+    "16": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
   },
   "content_scripts": [
     {
       "matches": [
         "*://leetcode.com/*",
-        "*://*.leetcode.com/*"
+        "*://*.leetcode.com/*",
+        "*://geeksforgeeks.org/*",
+        "*://*.geeksforgeeks.org/*",
+        "*://neetcode.io/*",
+        "*://*.neetcode.io/*"
       ],
       "css": [
         "content.css"
@@ -38,8 +42,19 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["popup.html", "popup.css", "popup.js"],
-      "matches": ["*://leetcode.com/*", "*://*.leetcode.com/*"]
+      "resources": [
+        "popup.html",
+        "popup.css",
+        "popup.js"
+      ],
+      "matches": [
+        "*://leetcode.com/*",
+        "*://*.leetcode.com/*",
+        "*://geeksforgeeks.org/*",
+        "*://*.geeksforgeeks.org/*",
+        "*://neetcode.io/*",
+        "*://*.neetcode.io/*"
+      ]
     }
   ]
 }
