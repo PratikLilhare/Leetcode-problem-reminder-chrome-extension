@@ -7,8 +7,9 @@ A Chrome extension designed to help you schedule, track, and manage your LeetCod
 ## Features
 
 - **Schedule Reminders**: Easily set a reminder for a LeetCode problem to revisit it after a specified number of days (e.g., 1 day, 3 days, 1 week).
-- **Auto-fill URL**: When on a LeetCode problem page, the extension automatically populates the problem URL in the reminder form.
+- **Auto-fill URL**: When on a LeetCode, GeeksforGeeks, or NeetCode problem page, the extension automatically populates the problem URL in the reminder form.
 - **Task Management**: View your problems organized into Today, Upcoming, and Backlog categories.
+- **Export Data**: Easily export your entire problem reminder history to a CSV file (Excel-compatible) with a single click.
 - **On-Page Widget**: Access your reminders directly on LeetCode via an integrated, floating widget.
 - **Extension Popup**: Use the popup interface from any webpage to quickly manage your reminders.
 

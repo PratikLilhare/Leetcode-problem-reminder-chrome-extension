@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const countUpcoming = document.getElementById('upcoming-count');
   const countBacklog = document.getElementById('backlog-count');
 
+  const exportBtn = document.getElementById('export-btn');
+
   // Autofill URL from parent content script when embedded
   if (isEmbedded) {
     // 1. Try reading from URL parameters first (fastest for initial load)
@@ -148,6 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
     renderAll();
   });
 
+  if (exportBtn) {
+    exportBtn.addEventListener('click', exportToCSV);
+  }
+
   // Helper functions
   function loadProblems() {
     chrome.storage.local.get(['leetcodeProblems'], (result) => {
@@ -159,6 +165,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function saveProblems() {
+    if (problems.length > 5000) {
+      const completed = problems.filter(p => p.completed).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      const active = problems.filter(p => !p.completed).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      const keptActive = active.slice(0, 5000);
+      const keptCompleted = completed.slice(0, Math.max(0, 5000 - keptActive.length));
+      problems = [...keptActive, ...keptCompleted];
+    }
     chrome.storage.local.set({ leetcodeProblems: problems });
   }
 
@@ -310,5 +323,38 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
+  }
+
+  function exportToCSV() {
+    if (problems.length === 0) {
+      alert("No data to export.");
+      return;
+    }
+
+    const headers = ['ID', 'Title', 'URL', 'Remind On', 'Created At', 'Completed', 'Stage'];
+    
+    const rows = problems.map(p => {
+      const title = p.title ? p.title.replace(/"/g, '""') : '';
+      return [
+        p.id,
+        `"${title}"`,
+        p.url || '',
+        new Date(p.remindOn).toLocaleDateString(),
+        new Date(p.createdAt).toLocaleDateString(),
+        p.completed ? 'Yes' : 'No',
+        p.stage || 0
+      ].join(',');
+    });
+
+    const csvContent = [headers.join(','), ...rows].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `lc_reminder_data_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 });
