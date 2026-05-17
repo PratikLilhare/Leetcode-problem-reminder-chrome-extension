@@ -1,5 +1,7 @@
 # LeetCode Problem Reminder
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/gfodgdebhllgabeegdfoaoeidjnghdpp.svg)](https://chromewebstore.google.com/detail/gfodgdebhllgabeegdfoaoeidjnghdpp/)
+
 A Chrome extension designed to help you schedule, track, and manage your LeetCode problem practice. It allows you to schedule problems to reappear after a set number of days and provides a seamless UI for monitoring your tasks directly on LeetCode.com, as well as via a convenient popup interface.
 
 ## Features
@@ -16,6 +18,10 @@ A Chrome extension designed to help you schedule, track, and manage your LeetCod
 
 ## Installation
 
+### From Chrome Web Store
+The easiest way to install the extension is directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/gfodgdebhllgabeegdfoaoeidjnghdpp/).
+
+### Manual Installation (Developer Mode)
 1. Clone or download this repository.
 2. Open Chrome and navigate to `chrome://extensions/`.
 3. Enable **Developer mode** in the top right corner.
